@@ -1,0 +1,48 @@
+_format_version: "3.0"
+services:
+  - name: users-api
+    url: http://localhost:5293  # Cambia esto por la URL de tu API
+    routes:
+      - name: register-route
+        paths:
+          - /api/Users/Register
+        methods:
+          - POST
+      - name: login-route
+        paths:
+          - /api/Users/Login
+        methods:
+          - POST
+      - name: get-users-route
+        paths:
+          - /api/Users
+        methods:
+          - GET
+      - name: password-recovery-route
+        paths:
+          - /api/Users/request-password-recovery
+        methods:
+          - POST
+      - name: verify-code-route
+        paths:
+          - /api/Users/verify-code
+        methods:
+          - POST
+      - name: set-password-route
+        paths:
+          - /api/Users/set-new-password
+        methods:
+          - POST
+    plugins:
+      - name: cors
+        config:
+          origins:
+            - "*"  # Se esperaba un array, incluso si es solo un valor
+          methods:
+            - GET
+            - POST
+            - OPTIONS
+          headers:
+            - Authorization
+            - Content-Type
+          credentials: true
