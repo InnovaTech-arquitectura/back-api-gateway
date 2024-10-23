@@ -46,6 +46,42 @@ services:
         methods:
           - POST
         strip_path: false
+      - name: get-info-client-route
+        paths:
+          - /api/account/client/{id}
+        methods:
+          - GET
+        strip_path: false
+      - name: edit-info-client-route
+        paths:
+          - /api/account/client/{id}
+        methods:
+          - PUT
+        strip_path: false
+      - name: get-info-entrepreneurship-route
+        paths:
+          - /api/account/entrepreneurship/{id}
+        methods:
+          - GET
+        strip_path: false
+      - name: edit-info-entrepreneurship-route
+        paths:
+          - /api/account/entrepreneurship/{id}
+        methods:
+          - PUT
+        strip_path: false
+      - name: register-client-route
+        paths:
+          - /api/Client/Register
+        methods:
+          - POST
+        strip_path: false
+      - name: register-entrepreneurship-route
+        paths:
+          - /api/Entrepreneurship/Register
+        methods:
+          - POST
+        strip_path: false
 
   - name: inventory-api
     url: http://10.43.100.194:8090
