@@ -1,7 +1,26 @@
 _format_version: "3.0"
+
+plugins:
+  - name: cors
+    config:
+      origins:
+        - "*"
+      methods:
+        - GET
+        - POST
+        - OPTIONS
+        - PUT
+        - PATCH
+        - DELETE
+        - HEAD
+      headers:
+        - Authorization
+        - Content-Type
+      credentials: true
+
 services:
   - name: users-api
-    url: http://localhost:5293  # Cambia esto por la URL de tu API
+    url: http://10.43.101.212:5293
     routes:
       - name: register-route
         paths:
@@ -33,16 +52,105 @@ services:
           - /api/Users/set-new-password
         methods:
           - POST
-    plugins:
-      - name: cors
-        config:
-          origins:
-            - "*"  # Se esperaba un array, incluso si es solo un valor
-          methods:
-            - GET
-            - POST
-            - OPTIONS
-          headers:
-            - Authorization
-            - Content-Type
-          credentials: true
+
+  - name: inventory-api
+    url: http://10.43.100.194:5300
+    routes:
+      - name: list-products-route
+        paths:
+          - /api/product/all
+        methods:
+          - GET
+      - name: find-product-route
+        paths:
+          - /api/product/{id}
+        methods:
+          - GET
+      - name: create-product-route
+        paths:
+          - /api/product/new
+        methods:
+          - POST
+      - name: edit-product-route
+        paths:
+          - /api/product/{id}
+        methods:
+          - PUT
+      - name: delete-product-route
+        paths:
+          - /api/product/{id}
+        methods:
+          - DELETE
+      - name: list-services-route
+        paths:
+          - /api/service/all
+        methods:
+          - GET
+      - name: find-service-route
+        paths:
+          - /api/service/{id}
+        methods:
+          - GET
+      - name: create-service-route
+        paths:
+          - /api/service/new
+        methods:
+          - POST
+      - name: edit-service-route
+        paths:
+          - /api/service/{id}
+        methods:
+          - PUT
+      - name: delete-service-route
+        paths:
+          - /api/service/{id}
+        methods:
+          - DELETE
+
+  - name: support-api
+    url: http://10.43.101.212:5400
+    routes:
+      - name: get-questions-route
+        paths:
+          - /support/questions
+        methods:
+          - GET
+      - name: create-question-route
+        paths:
+          - /support/questions
+        methods:
+          - POST
+      - name: get-question-by-id-route
+        paths:
+          - /support/questions/{id}
+        methods:
+          - GET
+      - name: get-questions-count-route
+        paths:
+          - /support/questions/count
+        methods:
+          - GET
+
+  - name: ecommerce-api
+    url: http://10.43.100.194:5500
+    routes:
+      - name: reservasController
+        paths:
+          - /api/reservas
+        methods:
+          - GET
+      - name: reservasController-by-id
+        paths:
+          - /api/reservas/{id}
+        methods:
+          - GET
+      - name: pedidoController
+        paths:
+          - /api/pedidos
+        methods:
+          - GET
+      - name: pedidoController-by-id
+        paths:
+          - /api/pedido/{id}
+        methods:
+          - GET
