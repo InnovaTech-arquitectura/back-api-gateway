@@ -1,22 +1,10 @@
 _format_version: "3.0"
 
 plugins:
-  - name: cors
+  - name: file-log
     config:
-      origins:
-        - "*"
-      methods:
-        - GET
-        - POST
-        - OPTIONS
-        - PUT
-        - PATCH
-        - DELETE
-        - HEAD
-      headers:
-        - Authorization
-        - Content-Type
-      credentials: true
+      path: /dev/stdout  # Esto asegura que los logs se impriman en la consola estándar
+
 
 services:
   - name: users-api
@@ -24,133 +12,195 @@ services:
     routes:
       - name: register-route
         paths:
-          - /api/Users/Register
+          - /api/Users/Regist
         methods:
           - POST
+        strip_path: false
       - name: login-route
         paths:
           - /api/Users/Login
         methods:
           - POST
+        strip_path: false
       - name: get-users-route
         paths:
           - /api/Users
         methods:
           - GET
+        strip_path: false
       - name: password-recovery-route
         paths:
           - /api/Users/request-password-recovery
         methods:
           - POST
+        strip_path: false
       - name: verify-code-route
         paths:
           - /api/Users/verify-code
         methods:
           - POST
+        strip_path: false
       - name: set-password-route
         paths:
           - /api/Users/set-new-password
         methods:
           - POST
+        strip_path: false
 
   - name: inventory-api
-    url: http://10.43.100.194:5300
+    url: http://10.43.100.194:8090
     routes:
       - name: list-products-route
         paths:
-          - /api/product/all
+          - /product/all
         methods:
           - GET
+        strip_path: false
       - name: find-product-route
         paths:
-          - /api/product/{id}
+          - /product/{id}
         methods:
           - GET
+        strip_path: false
       - name: create-product-route
         paths:
-          - /api/product/new
+          - /product/new
         methods:
           - POST
+        strip_path: false
       - name: edit-product-route
         paths:
-          - /api/product/{id}
+          - /product/{id}
         methods:
           - PUT
+        strip_path: false
       - name: delete-product-route
         paths:
-          - /api/product/{id}
+          - /product/{id}
         methods:
           - DELETE
+        strip_path: false
       - name: list-services-route
         paths:
-          - /api/service/all
+          - /service/all
         methods:
           - GET
+        strip_path: false
       - name: find-service-route
         paths:
-          - /api/service/{id}
+          - /service/{id}
         methods:
           - GET
+        strip_path: false
       - name: create-service-route
         paths:
-          - /api/service/new
+          - /service/new
+        strip_path: false
         methods:
           - POST
+        strip_path: false
       - name: edit-service-route
         paths:
-          - /api/service/{id}
+          - /service/{id}
+        strip_path: false
         methods:
           - PUT
+        strip_path: false
       - name: delete-service-route
         paths:
-          - /api/service/{id}
+          - /service/{id}
         methods:
           - DELETE
+        strip_path: false
+      - name: list-suppliers-route
+        paths:
+          - /supplier/all
+        methods:
+          - GET
+        strip_path: false
+      - name: find-supplier-route
+        paths:
+          - /supplier/{id}
+        methods:
+          - GET
+        strip_path: false
+      - name: create-supplier-route
+        paths:
+          - /supplier/new
+        methods:
+          - POST
+        strip_path: false
+      - name: edit-supplier-route
+        paths:
+          - /supplier/{id}
+        methods:
+          - PUT
+        strip_path: false
+      - name: delete-supplier-route
+        paths:
+          - /supplier/{id}
+        methods:
+          - DELETE
+        strip_path: false
+      - name: get-supplier-product-id-route
+        paths:
+          - /supplier/product/{id}
+        methods:
+          - GET
+        strip_path: false
 
   - name: support-api
-    url: http://10.43.101.212:5400
+    url: http://10.43.101.212:8090
     routes:
       - name: get-questions-route
         paths:
           - /support/questions
         methods:
           - GET
+        strip_path: false
       - name: create-question-route
         paths:
           - /support/questions
         methods:
           - POST
+        strip_path: false
       - name: get-question-by-id-route
         paths:
           - /support/questions/{id}
         methods:
           - GET
+        strip_path: false
       - name: get-questions-count-route
         paths:
           - /support/questions/count
         methods:
           - GET
+        strip_path: false
 
   - name: ecommerce-api
-    url: http://10.43.100.194:5500
+    url: http://10.43.100.194:8070
     routes:
       - name: reservasController
         paths:
           - /api/reservas
         methods:
           - GET
+        strip_path: false
       - name: reservasController-by-id
         paths:
           - /api/reservas/{id}
         methods:
           - GET
+        strip_path: false
       - name: pedidoController
         paths:
           - /api/pedidos
         methods:
           - GET
+        strip_path: false
       - name: pedidoController-by-id
         paths:
           - /api/pedido/{id}
         methods:
           - GET
+        strip_path: false
