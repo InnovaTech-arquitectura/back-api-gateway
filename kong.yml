@@ -3,7 +3,7 @@ _format_version: "3.0"
 plugins:
   - name: file-log
     config:
-      path: /dev/stdout  # Esto asegura que los logs se impriman en la consola estándar
+      path: /dev/stdout
   - name: cors
     config:
       origins: ["*"]
@@ -13,31 +13,26 @@ plugins:
   - name: prometheus
     config: {}
 
-  - name: response-transformer
-    config:
-      add:
-        headers:
-          - "Access-Control-Allow-Origin: *"  # Permite todos los orígenes
-          - "Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS"
-          - "Access-Control-Allow-Headers: Content-Type, Authorization, Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers"
-
-
+consumers:
+  - username: innovatech
+    jwt_secrets:
+      - key: "innovatech"
+        secret: "92b59136-88cf-4411-95b6-9bb977a8386b"
 
 services:
   - name: users-api
     url: http://10.43.101.212:5293
     routes:
-      
-      - name: register-route
+      - name: login-route
         paths:
-          - /api/Users/Regist
+          - /api/Users/Login
         methods:
           - POST
           - OPTIONS
         strip_path: false
-      - name: login-route
+      - name: register-route
         paths:
-          - /api/Users/Login
+          - /api/Users/Regist
         methods:
           - POST
           - OPTIONS
@@ -115,6 +110,17 @@ services:
 
   - name: inventory-api
     url: http://10.43.100.194:8090
+    plugins:
+    - name: jwt
+      config:
+        key_claim_name: "sub"            # Cambia a "sub" o el claim correcto en el JWT
+        claims_to_verify:
+          - "exp"
+        maximum_expiration: 3600
+
+        header_names:
+          - "Authorization"           # Cambia a "Authorization" o el header correcto en la petición
+          
     routes:
       - name: list-products-route
         paths:
@@ -231,6 +237,16 @@ services:
 
   - name: support-api
     url: http://10.43.101.212:8090
+    plugins:
+      - name: jwt
+        config:
+          key_claim_name: "sub"
+          claims_to_verify:
+            - "exp"
+          maximum_expiration: 3600
+
+          header_names:
+            - "Authorization"
     routes:
       - name: get-questions-route
         paths:
@@ -270,6 +286,7 @@ services:
 
   - name: ecommerce-api
     url: http://10.43.100.194:8070
+    plugins:
     routes:
       - name: reservasController
         paths:
