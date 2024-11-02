@@ -234,6 +234,48 @@ services:
           - GET
           - OPTIONS
         strip_path: false
+      - name: get-all-orders-route
+        paths:
+          - /order/all
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-order-by-id-route
+        paths:
+          - /order/{id}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-order-detail-route
+        paths:
+          - /order/{id}/details
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: create-order-route
+        paths:
+          - /order/add
+        methods:
+          - POST
+          - OPTIONS
+        strip_path: false
+      - name: edit-order-route
+        paths:
+          - /order/update
+        methods:
+          - PUT
+          - OPTIONS
+        strip_path: false
+      - name: delete-order-route
+        paths:
+          - /order/delete/{id}
+        methods:
+          - DELETE
+          - OPTIONS
+        strip_path: false
 
   - name: support-api
     url: http://10.43.101.212:8090
