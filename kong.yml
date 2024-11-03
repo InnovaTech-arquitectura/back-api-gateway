@@ -276,6 +276,21 @@ services:
           - DELETE
           - OPTIONS
         strip_path: false
+      - name: get-sales-route
+        paths:
+          - /sale/all
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: add-sale-route
+        paths:
+          - /sale/add
+        methods:
+          - POST
+          - OPTIONS
+        strip_path: false
+
 
   - name: support-api
     url: http://10.43.101.212:8090
