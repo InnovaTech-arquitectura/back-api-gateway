@@ -345,6 +345,20 @@ services:
     url: http://10.43.100.194:8070
     plugins:
     routes:
+      - name: get-bazares
+        paths:
+          - /api/bazares
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-bazares-by-id
+        paths:
+          - /api/bazares/{id}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
       - name: reservasController
         paths:
           - /api/reservas
