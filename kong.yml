@@ -115,19 +115,74 @@ services:
           - OPTIONS
         strip_path: false
       - name: get-coupons-by-user-route
+        paths:
+          - /cupones/user/{userId}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-coupons-by-entrepreneurship-route
+        paths:
+          - /cupones/entrepreneurship/{entrepreneurshipId}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-coupon-entrepreneurship-by-id-route
+        paths:
+          - /cupones/{id}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-coupon-by-id-and-entrepreneurship-route
+        paths:
+          - /cupones/{id}/entrepreneurship/{entrepreneurshipId}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: toggle-coupon-active-status-route
+        paths:
+          - /cupones/{id}/toggle-active
+        methods:
+          - PATCH
+          - OPTIONS
+        strip_path: false
+      - name: select-plan-route
+        paths:
+          - /api/Entrepreneurship/SelectPlan
+        methods:
+          - POST
+          - OPTIONS
+        strip_path: false
+      - name: get-plans-route
+        paths:
+          - /api/Entrepreneurship/plans
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-active-plan-route
+        paths:
+          - /api/Entrepreneurship/ActivePlan/{entrepreneurshipId}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
 
   - name: inventory-api
     url: http://10.43.100.194:8090
     plugins:
     - name: jwt
       config:
-        key_claim_name: "sub"            # Cambia a "sub" o el claim correcto en el JWT
+        key_claim_name: "sub"           
         claims_to_verify:
           - "exp"
         maximum_expiration: 3600
 
         header_names:
-          - "Authorization"           # Cambia a "Authorization" o el header correcto en la petición
+          - "Authorization"           
           
     routes:
       - name: list-products-route
@@ -216,7 +271,7 @@ services:
         strip_path: false
       - name: create-supplier-route
         paths:
-          - /supplier/new
+          - /supplier
         methods:
           - POST
           - OPTIONS
@@ -433,6 +488,13 @@ services:
       - name: obtener-servicio-por-indice
         paths:
           - /api/tienda/servicios/{index}
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-shopping-cart
+        paths:
+          - /api/carrito/shopingCart
         methods:
           - GET
           - OPTIONS
