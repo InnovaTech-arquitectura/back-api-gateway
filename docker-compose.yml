@@ -11,7 +11,10 @@ services:
       - ./kong.yml:/usr/local/kong/declarative/kong.yml  # Monta el archivo YML
     networks:
       - kong-net
+    restart: always
 
 networks:
   kong-net:
     driver: bridge
+
+

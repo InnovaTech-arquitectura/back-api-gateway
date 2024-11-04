@@ -37,6 +37,13 @@ services:
           - POST
           - OPTIONS
         strip_path: false
+      - name: register-user-2
+        paths:
+          - /api/Users/Register
+        methods:
+          - POST
+          - OPTIONS
+        strip_path: false
       - name: get-users-route
         paths:
           - /api/Users
@@ -107,6 +114,7 @@ services:
           - POST
           - OPTIONS
         strip_path: false
+      - name: get-coupons-by-user-route
 
   - name: inventory-api
     url: http://10.43.100.194:8090
