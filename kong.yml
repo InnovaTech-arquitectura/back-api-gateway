@@ -262,11 +262,13 @@ services:
           - GET
           - OPTIONS
         strip_path: false
-      - name: find-supplier-route
+      - name: supplier-route
         paths:
-          - /supplier/{id}
+          - ~/supplier/\d+
         methods:
           - GET
+          - PUT
+          - DELETE
           - OPTIONS
         strip_path: false
       - name: create-supplier-route
@@ -276,20 +278,7 @@ services:
           - POST
           - OPTIONS
         strip_path: false
-      - name: edit-supplier-route
-        paths:
-          - /supplier/{id}
-        methods:
-          - PUT
-          - OPTIONS
-        strip_path: false
-      - name: delete-supplier-route
-        paths:
-          - /supplier/{id}
-        methods:
-          - DELETE
-          - OPTIONS
-        strip_path: false
+
       - name: get-supplier-product-id-route
         paths:
           - /supplier/product/{id}
