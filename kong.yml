@@ -344,14 +344,14 @@ services:
         strip_path: false
       - name: get-finance-by-entrepreneurship-route
         paths:
-          - ~/finances/\d+
+          - ~/dashboard/finances/\d+
         methods:
           - GET
           - OPTIONS
         strip_path: false
       - name: get-general-stats-route
         paths:
-          - ~/generalStats/\d+/\d+
+          - ~/dashboard/generalStats/\d+/\d+
         methods:
           - GET
           - OPTIONS
