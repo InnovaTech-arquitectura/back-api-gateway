@@ -342,6 +342,20 @@ services:
           - POST
           - OPTIONS
         strip_path: false
+      - name: get-finance-by-entrepreneurship-route
+        paths:
+          - ~/finances/\d+
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-general-stats-route
+        paths:
+          - ~/generalStats/\d+/\d+
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
 
 
   - name: support-api
