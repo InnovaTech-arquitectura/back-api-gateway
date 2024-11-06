@@ -344,7 +344,7 @@ services:
         strip_path: false
       - name: get-finance-by-entrepreneurship-route
         paths:
-          - ~/dashboard/finances/\d+
+          - ~/dashboard/finances/\d+/\d+
         methods:
           - GET
           - OPTIONS
