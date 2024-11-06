@@ -330,14 +330,14 @@ services:
         strip_path: false
       - name: get-sales-route
         paths:
-          - /sale/all
+          - /sales/all
         methods:
           - GET
           - OPTIONS
         strip_path: false
-      - name: add-sale-route
+      - name: add-sales-route
         paths:
-          - /sale/add
+          - /sales/add
         methods:
           - POST
           - OPTIONS
