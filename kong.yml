@@ -518,7 +518,7 @@ services:
         strip_path: false
       - name: get-shopping-cart
         paths:
-          - /api/carrito/shopingCart
+          - /api/carrito/shoppingCart
         methods:
           - GET
           - OPTIONS
