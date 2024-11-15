@@ -170,6 +170,13 @@ services:
           - GET
           - OPTIONS
         strip_path: false
+      - name: get-entrepreneurship-by-id-route
+        paths:
+          - /api/account/entrepreneurship/id/\d+
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
 
   - name: inventory-api
     url: http://10.43.100.194:8090
@@ -352,6 +359,20 @@ services:
       - name: get-general-stats-route
         paths:
           - ~/dashboard/generalStats/\d+/\d+
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: list-products-by-enterprise-route
+        paths:
+          - ~/entrepreneurship/\d+/products
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: list-services-by-entrepreneurship-route
+        paths:
+          - ~/entrepreneurship/\d+/services
         methods:
           - GET
           - OPTIONS
