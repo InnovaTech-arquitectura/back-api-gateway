@@ -1,5 +1,5 @@
 services:
-  kong:
+  kong-node-1:
     image: kong:3.3
     environment:
       KONG_DATABASE: "off"  # Desactivando la base de datos
@@ -7,6 +7,19 @@ services:
     ports:
       - "8000:8000"  # Puerto para las peticiones proxy (clientes)
       - "8001:8001"  # Puerto para la administración de Kong
+    volumes:
+      - ./kong.yml:/usr/local/kong/declarative/kong.yml  # Monta el archivo YML
+    networks:
+      - kong-net
+    restart: always
+  kong-node-2:
+    image: kong:3.3
+    environment:
+      KONG_DATABASE: "off"  # Desactivando la base de datos
+      KONG_DECLARATIVE_CONFIG: /usr/local/kong/declarative/kong.yml  # Carga el archivo YML
+    ports:
+      - "8002:8000"  # Puerto para las peticiones proxy (clientes)
+      - "8003:8001"  # Puerto para la administración de Kong
     volumes:
       - ./kong.yml:/usr/local/kong/declarative/kong.yml  # Monta el archivo YML
     networks:
