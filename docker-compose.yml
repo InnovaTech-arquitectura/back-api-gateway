@@ -25,6 +25,18 @@ services:
     networks:
       - kong-net
     restart: always
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8085:8080"  # Mapea el puerto 8080 del contenedor al 8081 en el host
+    restart: unless-stopped  # Reiniciar a menos que se detenga manualmente
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
 
 networks:
   kong-net:
