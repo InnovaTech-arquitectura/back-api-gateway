@@ -377,6 +377,20 @@ services:
           - GET
           - OPTIONS
         strip_path: false
+      - name: list-orders-by-entrepreneurship-route
+        paths:
+          - ~/product/entrepreneurship/\d+
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: list-sales-by-entrepreneurship-route
+        paths:
+          - ~/service/entrepreneurship/\d+
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
 
 
   - name: support-api
@@ -397,12 +411,6 @@ services:
           - /support/questions
         methods:
           - GET
-          - OPTIONS
-        strip_path: false
-      - name: create-question-route
-        paths:
-          - /support/questions
-        methods:
           - POST
           - OPTIONS
         strip_path: false
