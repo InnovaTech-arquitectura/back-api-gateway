@@ -428,13 +428,6 @@ services:
           - GET
           - OPTIONS
         strip_path: false
-      - name: get-questions-with-pagination-route
-        paths:
-          - /support/questions
-        methods:
-          - GET
-          - OPTIONS
-        strip_path: false
 
   - name: ecommerce-api
     url: http://10.43.100.194:8070
