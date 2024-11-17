@@ -177,6 +177,27 @@ services:
           - GET
           - OPTIONS
         strip_path: false
+      - name: get-functionalities-by-plan-route
+        paths:
+          - ~/NavBar/\d+/functionalities
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-all-functionalities-by-plans-route
+        paths:
+          - /NavBar/functionalities
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-user-functionalities-route
+        paths:
+          - ~/NavBar/users/\d+/functionalities
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
 
   - name: inventory-api
     url: http://10.43.100.194:8090
@@ -387,6 +408,13 @@ services:
       - name: list-sales-by-entrepreneurship-route
         paths:
           - ~/service/entrepreneurship/\d+
+        methods:
+          - GET
+          - OPTIONS
+        strip_path: false
+      - name: get-sales-by-entrepreneurship-route
+        paths:
+          - ~/sales/by-entrepreneurship/\d+
         methods:
           - GET
           - OPTIONS
